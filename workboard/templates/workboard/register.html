@@ -1,0 +1,37 @@
+{% extends "workboard/layout.html" %}
+
+{% block body %}
+
+    <div class="wrapped_page">
+        <div class="page_box">
+            <h1>Register</h1>
+
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Register">
+            </form>
+
+            <br />
+
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+            </div>
+        </div>
+
+{% endblock %}

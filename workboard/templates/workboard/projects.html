@@ -1,0 +1,58 @@
+{% extends "workboard/layout.html" %}
+
+{% block body %}
+<div class="projects_page">
+    {% if has_projects %}
+        <div class="project_actions">
+            <div class="cta2 create_project_button">Create new Project</div>
+        </div>
+
+        <div class="project_list">
+            {% for project in projects %}
+                <a href="{{ project.link }}" class="project_item" id="project_item_{{ project.id }}">
+                    <div class="actions_trigger" data-project-id="{{ project.id }}">...</div>
+                    <h2>
+                        {{ project.name }}
+                    </h2>
+
+                    <div class="project_information">
+                        <div>
+                            Tickets: <span>{{ project.ticket_count }}</span>
+                        </div>
+
+                        <div>
+                            Created at: <span>{{ project.timestamp }}</span>
+                        </div>
+
+                        <div>
+                            Last activity at:
+                                <span>
+                                    {% if project.ticket_count == 0 %}
+                                        --
+                                    {% else %}
+                                        {{ project.last_activity_timestamp }}
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        Participating members: {{ project.participants }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div>
+            <div class="page_message">
+                <div>
+                    <p>
+                        There are no projects to be shown.
+                    </p>
+                    <div class="cta2 create_project_button">Create new Project</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

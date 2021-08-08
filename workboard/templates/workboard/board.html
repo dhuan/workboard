@@ -1,0 +1,22 @@
+{% extends "workboard/layout.html" %}
+
+{% block body %}
+    {% if project_exists %}
+        <script>
+            window.document.addEventListener("DOMContentLoaded", loadBoard)
+        </script>
+
+        <div>
+            <div id="board_container">
+                <div id="board_content">
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="page_message">
+            <div>
+                This project does not exist.
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

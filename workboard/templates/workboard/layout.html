@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Workboard{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'workboard/styles.css' %}" rel="stylesheet">
+
+        <script src="{% static 'workboard/utils.js' %}"></script>
+        <script src="{% static 'workboard/api.js' %}"></script>
+        <script src="{% static 'workboard/dom.js' %}"></script>
+        <script src="{% static 'workboard/form.js' %}"></script>
+        <script src="{% static 'workboard/ui.js' %}"></script>
+        <script src="{% static 'workboard/board.js' %}"></script>
+        <script src="{% static 'workboard/projects.js' %}"></script>
+        <script src="{% static 'workboard/dropdown.js' %}"></script>
+        <script src="{% static 'workboard/tabs.js' %}"></script>
+        <script src="{% static 'workboard/main.js' %}"></script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Workboard</a>
+          
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        
+        <div class="body">
+            <div class="page_wrapper">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div id="modal_wrapper" style="display: none">
+            <div id="modal_box">
+                <div id="modal_controls">
+                    <div id="modal_controls_close">x</div>
+                </div>
+                <div id="modal_content">
+                </div>
+            </div>
+        </div>
+
+        <div id="dropdown_area"></div>
+
+        <div id="loading_screen" style="display: none">
+            <div>
+                <img src="{% static 'workboard/images/loading.gif' %}" />
+            </div>
+        </div>
+    </body>
+</html>
