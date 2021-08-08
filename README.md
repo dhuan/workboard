@@ -12,6 +12,20 @@
 
 ## Setting up
 
+Follow any of the methods below to install Workboard and then on your browser, open up the app visiting http://localhost:3000 
+
+### Docker
+
+This is easiest method. The commands below will create the Docker image and then startup the container.
+
+```
+docker build -t workboard .
+
+docker run -ti -p 8000:8000 workboard
+```
+
+### Normal installation
+
 Workboard depends on Python, Django and SQLite. Once those dependencies are installed, you can run the migrations which will set up the database for you:
 
 ```
