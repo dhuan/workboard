@@ -10,6 +10,8 @@
 - Discuss about tickets, making comments.
 - Keep track of tickets' progress. Whenever tickets are moved between different Lists, or edited, that information becomes visible in the Ticket's History section.
 
+https://user-images.githubusercontent.com/2403890/132137817-6da58d8b-8238-42a7-b2ec-1a5b56c2f0fb.mp4
+
 ## Setting up
 
 Follow any of the methods below to install Workboard and then on your browser, open up the app visiting http://localhost:3000 
